@@ -1,0 +1,320 @@
+
+查sql中as的用法搜索到的一些经典的sql语句 convert(2008-11-20 18:03:50)
+
+ 
+
+In:等值连接，用来查找多表相同字段的记录
+
+Not In:非等值连接，用来查找不存在的记录
+
+Inner join:内连接，主要用来查找都符合条件的记录
+
+Left join:左连接，主要用来查找左边有，右边没有的用空值表达
+
+Right join:右连接，主要用来查找右边有，左边没有的用空值表达
+
+Order By:升序 Asc 降序 Desc
+
+Group By:分组排序 按字段分组(如按班级分),使用的都要有集合函数存在
+
+Having :对分组条件进行判断,使用都要确保每个字段都要用集合函数
+
+COMPUTE BY：子句使您得以用同一 SELECT 语句既查看明细行，又查看汇总行。可以计算子组的汇总值，也可以计算整个结果集的汇总值。
+
+行聚合函数名称；例如，SUM、AVG、MIN、MAX 或 COUNT
+
+insert into:主要把查询的语句插入到新表。
+
+in的用法是where xx in ('aa','bb','cc')
+
+相当于 where xx='aa' or xx='bb' or xx='cc'
+
+SQL中IN与EXISTS的用法比较本文章更新于：07年10月31日 来源：本站 | 归类：SQLServer
+
+作为子查询:
+
+IN：
+
+1、SELECT * FROM family WHERE id IN (SELECT [id] FROM p_info)
+
+返回结果为所有id包含在p_info表中的Paples_Info结果集.
+
+EXISTS：
+
+2、SELECT * FROM family WHERE EXISTS (SELECT [id] FROM p_info)
+
+返回结果为p_info存在相同数据的family结果集.（并不指定哪列相同）
+
+3、SELECT * FROM family WHERE EXISTS (SELECT [id] FROM p_info WHERE family.[id]=P_INFO.[id])
+
+返回结果同（1），这是指定了id列关联的结果。
+
+作为主查询条件
+
+IN ：
+
+SELECT * FROM family WHERE id IN('12345','56789')
+
+EXISTS：
+
+查sql中as的用法搜索到的一些经典的sql语句
+
+关键字: SQL
+
+总结一些工作中用到或碰到的SQL语句，希望能与大家分享，同时也希望大家能提供更多的精妙SQL语句.....
+
+1、delete table1 from (select * from table2) as t2 where table1.id=t2.id
+
+2、truncate table table1 (不在事务日志中做记录，比delete table快，但不能激活触发器)
+
+3、update table1 set column=column+1 where id from table2)
+
+4、update table1 set column=column+1 from table1,table2 where table1.id=table2.id
+
+5、select top n [Percent] * from table1 '输出百分比记录
+
+6、select id,column1 * column2 as column from table1 '可算明白as的用法了
+
+7、select * from table1 where column1 like 'SQL#_G_O' escape '#' '单匹配
+
+8、select table1.id from table1 where not exists (select table2.id from table2 where table1.id=table2.id) '这个应该比not in快
+
+一些
+
+9、select table1.id from table1,table2 where table1.id<>table2.id '看复合查询机制
+
+10、select table1.id from table1,table2,(select id from table3) as t3 where table1.id=table2.id and table2.id=t3.id '有些类似
+
+[1]了......
+
+11、select * from table1 where column1 like '[A]%' or like '[^B]%'
+
+12、select @column1=column1 from table1;select @column1 as column1 '存储到自定义变量
+
+13、select * from table1 where contains(column1,'char1 or char2*') '全文索引
+
+14、select * from table1 where contains(column1,'前有 near 中有 near 后有')
+
+15、select * from table1 where contains(column1,'formsof(inflectional,go)') '派生
+
+16、select * from table1 where contains(description,'isabout(apple weight(.9),boy weight(.8),china weight(.7))') '权重
+
+17、select * from table1 where freetext(column1,'char') '仅支持文字不支持表达式搜索
+
+18、insert into table1 select column1,count(column1) from table2 group by column1 '统计
+
+-----------------------------------------------------------------------------------------
+
+1 说明：复制表(只复制结构,源表名：a 新表名：b)
+
+SQL: select * into b from a where 1<>1
+
+2 说明：拷贝表(拷贝数据,源表名：a 目标表名：b)
+
+SQL: insert into b(a, b, c) select d,e,f from b;
+
+3 说明：显示文章、提交人和最后回复时间
+
+SQL: select a.title,a.username,b.adddate from table a,(select max(adddate) adddate from table where table.title=a.title) b
+
+4 说明：外连接查询(表名1：a 表名2：b)
+
+SQL: select a.a, a.b, a.c, b.c, b.d, b.f from a LEFT OUT JOIN b ON a.a = b.c
+
+5 说明：日程安排提前五分钟提醒
+
+SQL: select * from 日程安排 where datediff('minute',f开始时间,getdate())>5
+
+6 说明：两张关联表，删除主表中已经在副表中没有的信息
+
+SQL:
+
+delete from info where not exists ( select * from infobz where info.infid=infobz.infid )
+
+7 说明：
+
+从数据库中去一年的各单位电话费统计(电话费定额和电话费清单两个表来源）
+
+SQL:
+
+SELECT a.userper, a.tel, a.standfee, TO_CHAR(a.telfeedate, 'yyyy') AS telyear,
+
+SUM(decode(TO_CHAR(a.telfeedate, 'mm'), '01', a.factration)) AS JAN,
+
+SUM(decode(TO_CHAR(a.telfeedate, 'mm'), '02', a.factration)) AS FRI,
+
+SUM(decode(TO_CHAR(a.telfeedate, 'mm'), '03', a.factration)) AS MAR,
+
+SUM(decode(TO_CHAR(a.telfeedate, 'mm'), '04', a.factration)) AS APR,
+
+SUM(decode(TO_CHAR(a.telfeedate, 'mm'), '05', a.factration)) AS MAY,
+
+SUM(decode(TO_CHAR(a.telfeedate, 'mm'), '06', a.factration)) AS JUE,
+
+SUM(decode(TO_CHAR(a.telfeedate, 'mm'), '07', a.factration)) AS JUL,
+
+SUM(decode(TO_CHAR(a.telfeedate, 'mm'), '08', a.factration)) AS AGU,
+
+SUM(decode(TO_CHAR(a.telfeedate, 'mm'), '09', a.factration)) AS SEP,
+
+SUM(decode(TO_CHAR(a.telfeedate, 'mm'), '10', a.factration)) AS OCT,
+
+SUM(decode(TO_CHAR(a.telfeedate, 'mm'), '11', a.factration)) AS NOV,
+
+SUM(decode(TO_CHAR(a.telfeedate, 'mm'), '12', a.factration)) AS DEC
+
+FROM (SELECT a.userper, a.tel, a.standfee, b.telfeedate, b.factration
+
+FROM TELFEESTAND a, TELFEE b
+
+WHERE a.tel = b.telfax) a
+
+GROUP BY a.userper, a.tel, a.standfee, TO_CHAR(a.telfeedate, 'yyyy')
+
+8 说明：四表联查问题：
+
+SQL: select * from a left inner join b on a.a=b.b right inner join c on a.a=c.c inner join d on a.a=d.d where .....
+
+9 说明：得到表中最小的未使用的ID号
+
+SQL:
+
+SELECT (CASE WHEN EXISTS(SELECT * FROM Handle b WHERE b.HandleID = 1) THEN MIN(HandleID) + 1 ELSE 1 END) as HandleID
+
+FROM Handle
+
+WHERE NOT HandleID IN (SELECT a.HandleID - 1 FROM Handle a)
+
+10 说明：模糊查询，单字匹配(短横线代表待匹配内容)
+
+select * from table where field1 like 'A_B_C'
+
+11 说明：as的用法
+
+select id,column1 * column2 as column from table1
+
+SQL Convert的用法
+
+功能
+
+返回转换成提供的数据类型的表达式。
+
+语法
+
+CONVERT ( data type, expression [ , format-style ] )
+
+参数
+
+data type 表达式将转换成的数据类型。
+
+expression 要转换的表达式。
+
+format-style 对于将字符串转换为日期或时间数据类型以及相反的转换过程，format-style 是描述要使用的日期格式字符串的样式代码。
+
+format-style 参数的值具有下列含义：不含世纪 (yy) 含世纪 (yyyy) 输出
+
+- 0 或 100 Mmm dd yyyy hh:nn:ss:sss AM（或 PM）
+
+1 101 mm/dd/yy[yy]
+
+2 102 [yy]yy.mm.dd
+
+3 103 dd/mm/yy[yy]
+
+4 104 dd.mm.yy[yy]
+
+5 105 dd-mm-yy[yy]
+
+6 106 dd Mmm yy[yy]
+
+7 107 Mmm dd, yy[yy]
+
+8 108 hh:nn:ss
+
+- 9 或 109 Mmm dd yyyy hh:nn:ss:sssAM（或 PM）
+
+10 110 mm-dd-yy[yy]
+
+11 111 [yy]yy/mm/dd
+
+12 112 [yy]yymmdd
+
+13 113 dd Mmm yyy hh:nn:ss:sss（24 小时制，欧洲缺省时间 + 毫秒，4 位数年份）
+
+14 114 hh:nn:ss:sss（24 小时制）
+
+20 120 yyyy-mm-dd hh:nn:ss:sss（24 小时制，ODBC 规范，4 位数年份）
+
+21 121 yyyy-mm-dd hh:nn:ss.sss（24 小时制，ODBC 规范加毫秒，4 位数年份）
+
+使用 CONVERT：
+
+CONVERT (data_type[(length)], expression [, style])
+
+select CONVERT(varchar, getdate(), 120 )
+
+2004-09-12 11:06:08
+
+select replace(replace(replace(CONVERT(varchar, getdate(), 120 ),/'-/',/'/'),/' /',/'/'),/':/',/'/')
+
+20040912110608
+
+select CONVERT(varchar(12) , getdate(), 111 )
+
+2004/09/12
+
+select CONVERT(varchar(12) , getdate(), 112 )
+
+20040912
+
+select CONVERT(varchar(12) , getdate(), 102 )
+
+2004.09.12
+
+select CONVERT(varchar(12) , getdate(), 101 )
+
+09/12/2004
+
+select CONVERT(varchar(12) , getdate(), 103 )
+
+12/09/2004
+
+select CONVERT(varchar(12) , getdate(), 104 )
+
+12.09.2004
+
+select CONVERT(varchar(12) , getdate(), 105 )
+
+12-09-2004
+
+select CONVERT(varchar(12) , getdate(), 106 )
+
+12 09 2004
+
+select CONVERT(varchar(12) , getdate(), 107 )
+
+09 12, 2004
+
+select CONVERT(varchar(12) , getdate(), 108 )
+
+11:06:08
+
+select CONVERT(varchar(12) , getdate(), 109 )
+
+09 12 2004 1
+
+select CONVERT(varchar(12) , getdate(), 110 )
+
+09-12-2004
+
+select CONVERT(varchar(12) , getdate(), 113 )
+
+12 09 2004 1
+
+select CONVERT(varchar(12) , getdate(), 114 )
+
+11:06:08.177
+
+convert(int,rId) 将rid 转为int型
+
+
