@@ -1,0 +1,3 @@
+获取token的值："token":"2ab74bcf1efe4585b9f8c633612a5636"},"roleName":null}
+
+正则表达式如下："token":"(.*?)"
