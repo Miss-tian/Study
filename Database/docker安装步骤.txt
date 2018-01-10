@@ -1,0 +1,122 @@
+docker在centos7上可以直接用yum安装，centos6.x上须安装其他再进行docker安装
+sudo passwd root:更改root用户的密码；
+
+docker在centos7上安装：
+
+1、安装Docker：
+#yum install docker
+
+2、启动docker
+#  sudo systemctl start docker.service
+
+3、更新docker
+# sudo apt-get upgrade docker-engine
+
+  停止docker服务
+#sudo systemctl stop docker
+
+4、卸载docker
+#sudo apt-get purge docker-engine
+#sudo apt-get autoremove --purge docker-engine
+
+5、新建并启动一个容器
+#docker run -i -t image_name /bin/bash  
+-t：让Docker分配一个为终端并绑定到容器的标准输入； -i：让容器的标准输入保持打开
+
+6、docker挂载本地目录
+
+#docker run -it -v /home/dock/Downloads:/usr/Downloads ubuntu64 /bin/bash
+通过参数-v，冒号前为宿主机目录，必须为绝对路径，冒号后为镜像内挂载的路径
+
+docker run -i -t -v /home/tx/tx1/EP2.0.6:/home --privileged=true xin/centos-7 /bin/bash
+挂载成功后，用户无权限，必须加上privileged=true才能ls挂载后的目录；
+
+7、检查虚拟机内核版本信息的命令：
+#cat /proc/version 或者使用 uname -a
+
+8、终止容器：docker stop 终止一个运行中的容器；exit或Ctrl+d退出终端时，创建的容器立刻停止
+
+9、docker ps -a命令可以看到所有状态的容器
+
+10、docker rm .....删除一个处于终止状态的容器，若要删除一个运行中的容器，可以添加 -f参数
+
+11、从docker的目录下，复制文件到容器的一个目录
+#docker cp /home/tx/jdk-8u131-linux-x64.tar.gz 075a4436844c:/root
+其中cp /home/tx/是文件jdk所在的目录路径，075a4436844c是容器的id，/root是容器中的一个路径
+
+
+
+docker创建基础镜像：
+centos7上创建基础镜像使用的工具是supermin，与centos6.x上的名字不同
+centos7上安装supermin的命令：
+#sudo yum install -y supermin*
+
+使用supermin创建基础镜像：
+# supermin5 -v --prepare bash coreutils -o supermin.d
+# supermin5 -v --build --format chroot supermin.d -o appliance.d
+# echo 7 > appliance.d/etc/yum/vars/releasever
+
+# tar --numeric-owner -cpf centos-7.tar -C appliance.d .
+# cat centos-7.tar | docker import - kongxx/centos-7
+
+
+
+docker run -i -t  xin/centos-7 /bin/bash
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+centos7上安装docker：
+
+1、添加yum软件源:
+$sudo tee /etc/yum.repos.d/docker.repo <<-'E0F'
+[dockerrepo]
+name=Docker Repository
+baseurl=https://yum.dockerproject.org/repo/main/centos/$releasever/
+enabled=1
+gpgcheck=1
+gpgkey=https://yum.dockerproject.org/gpg
+E0F
+
+2、更新yum软件源缓存
+$sudo yum update
+
+3、安装docker-engine
+$sudo yum install -y docker-engine
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
