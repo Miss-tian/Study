@@ -1,0 +1,80 @@
+①将邮箱生成公私钥的命令：ssh-keygen -t rsa -C "15102867562@163.com"
+②查看生成公钥的命令：cat ~/.ssh/id_rsa.pub
+③查看生成私钥的命令：cat ~/.ssh/id_rsa
+④git push -u origin test；
+git checkout -b test；
+git commit -m"add test"； 
+git config --global user.email tianxin@163.com；
+ git config --global user.name tianxin；
+git commit -m"add test"；
+git status；
+git add test.txt；
+
+⑤git remote  add origin url
+
+git remote -v查看远程库的地址详情
+
+⑥添加远程仓库：
+git remote 
+ git remote add (仓库克隆路径)
+
+⑦克隆仓库时使用http方式，命令携带用户名和密码：http://name:pwd@url
+ewe
+公钥内容示例1：
+jjXM/bcLnk9kxDXhkx9JwEPkKGhj+pxBXpDSvFlXAfh9BHFlIwcuTZkTmdligq6uz286rKA1iAJ64pL1iXt4EwmIz2tABcsDIC3BZMyywC6fhlngszxgHsRAJZ1fu5h6NzBK4AQnoVxiJTlV6LC61/X2coUrIreC3HtqAPtHPjiV2h57DGEc5qabrthH08JhD/CVaIg0liP+9/vgT6PH7VogMjMAz3voRmdTHGibfjdUUOugieet7L9Q5+g624V6ysOqvRYV8grIJwhx99G7gtnvE3vLUrm/JHddrUaIaFxFEXr6kgYuvjZVDrmlQdYlS4yVWN 15102867562@163.com
+
+gitlab启动/停止/重启的命令：gitlab-ctl start/stop/restart
+
+
+※ 修改本地gitlab用户名的命令：git config user.name newname（git config globle user.name newname）
+
+※ 修改本地gitlab用户邮箱的命令：git config user.email newemail（git config globle user.email newname）
+
+查看邮箱的命令：git config user.email
+
+1、到对应目录下
+
+2、Git init（初始化）初始化后在本地代码库会自动创建一个.git隐藏文件，这个就是本地代码库
+
+3、git add . （加载文件）. 是把文件夹里面的所有文件都加载进来
+
+4、 git commit -m "init commit"（提交文件，创建文件时间点）
+5、git status 查看状态
+
+6、 git remote add origin URL（地址）（推送代码）第一次推送的时候要添加远程的代码库到配置 ，其中origin名字自己命名，随自己喜欢
+
+7、git push origin master（推送代码）
+
+8、gitlab -ctl stop/start/restart
+
+9、sudo git stash(在git文件夹下面的spms里面，去执行这个命令，可以解决冲突)
+
+
+
+
+HTTP方式克隆仓库修改用户及密码的命令：git clone http://yh_lile:19911113@10.124.1.109/SPMS/ext-doc.git
+
+
+
+
+
+
+
+
+
+
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDTvGSEa8mDv7A09ajqFk2XzIG+I6Ss8DzE8yCPvLOfuMemY
+pDbtHWjXQCW34ZgwZl9ieTL92OHN7mO55dIJgiSnnXlna9GWOAVO5kDku2nCYo5dGV8Cbi30CsUap1Wd2lZzL
+zU2A3UBZpvOwUyQ7dxpFYpZZlaKX0+KtMVlOYYs/5Lw9GpknvkOIQO9gXcaYZkV6uUjZz46yXENGF8PXCVKrD
+ox9PimByRWrNdWlpbHVw11zNqpbeVl8SXHRx5rPHAE7mR9fXDRLLTQHgPYZ/xXKa7VCmDj
+JqVk844EKk+piAcdGXy37Zc1C3h5qysukby1UeKVtHqaQncqesKw+c9 meiyu@meiyu-PC
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCeO6qBRziGDzUNCyVakgxw+IfQlMx+amkIdxpqwAxNPKC9B2YTzZekRtQ8Dfqz3O8FExR9K4JjJG7kmaKx4+5dlk5zYKghCuwBDzbAHHM23AeLzN9ZNX9+WtCi7uHZmiTqbJKw1CPc+FwrRjPVljVejpTKknjs1qf8+ISlpZCavjUxJNxIy7ciBvWqqhCkg3xfoQJbRpRO4iz+8iaKuxM7/7E5Or3UWdrAoCxinc31Qu4QC8iOOuFvk3Di/Z08O4DfEH0q4YVHrqUL7EpBoMaIevJv+HpfT7LfJMFiMUk9MoM50wup6WpjgL2TA6Q43QEsnM8HnfBXHXADOR6KC7VB meiyu@meiyu-PC
+
+
+zj2LpbwfY4Fxa99TgNaJ
+xWzHJzXHGjugMFo6Lx5U
+git@localhost:WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW/wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww.git
+
+
+
+

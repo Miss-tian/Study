@@ -1,0 +1,9 @@
+1.更改数据库，appache端口
+   /opt/zbox/etc  路径下的三个文件里面端口修改
+
+2.坑的位置：
+   这个路径下：/opt/zbox/app/zentao/config
+   有个文件：my.php 里面有数据库端口也要修改，然后添加登录数据库的用户密码
+
+3.想要远程navcat访问，必须修改（删除或者注释掉）my.cnf文件里面的
+   bind-address            = 127.0.0.1

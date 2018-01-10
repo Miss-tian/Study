@@ -1,0 +1,36 @@
+1、查看防火墙的状态：service iptables status
+2、查看是否安装了防火墙：rpm -qa|grep iptables
+3、ll Linux查看文件的详情(包括修改时间)
+4、../bin/shutdown.sh;../bin/startup.sh
+5、解压命令：unzip xxx.zip
+6、把/home目录下面的mydata目录压缩为mydata.zip ：zip -r mydata.zip mydata #压缩mydata目录
+
+18428389866
+lijiahui
+
+
+7、linux下查看tomcat；ps ef grep tomcat
+
+8、Linux下查看CMS服务是否启动：ps ef | grep tomcat
+
+10、虚拟机看进程：ps -ef | grep mysql(查看数据库的进程)
+
+9、虚拟机安装密码：tianxin9250
+
+9、../apache-jmeter-3.1/bin/jmeter.sh -n -t login.jmx
+
+10、SPMS发放升级包的linux命令：后台：sudo bash spms_permit_serice.sh 前端：sudo bash spms_web.sh
+
+11、find / -name filename
+
+12、source命令
+
+13、查看服务器进程是否启动：lsof -i:8080（根据端口查看进程是否启动）  期望结果：如果被监听，则进程成功启动，若未被监听，则不会显示listen
+
+14、查看服务器进程是否启动：ps -ef | grep jetty (这个是不知道端口号的时候用的命令，可以查看启动的路径等相关信息)
+
+15、启动进程使用的命令：bin/jetty.sh/start
+
+16、sz +文件名(下载linux上的文件)；下载的文件保存的路径在 options-sessions options-X/Y/Zmodem里面查看
+
+17、rz +文件名(将文件上传到linux)；上传的文件放在的路径在 options-sessions options-X/Y/Zmodem里面查看
