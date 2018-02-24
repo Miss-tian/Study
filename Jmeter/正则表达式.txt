@@ -1,3 +1,19 @@
 获取token的值："token":"2ab74bcf1efe4585b9f8c633612a5636"},"roleName":null}
 
 正则表达式如下："token":"(.*?)"
+
+获取响应结果的id值，若有多个，则可以指定某一个
+
+例：响应结果：{
+				"id": 33,
+				"roleName": "新增角色1",
+				"roleDescription": "新增",
+				"createTime": 1517973665000
+			}, {
+				"id": 32,
+				"roleName": "角色新增新增角色2",
+				"roleDescription": "测试",
+				"createTime": 1517824162000
+			}
+
+正则表达式："id":([1-9]*)   jmeter中正则表达式提取器匹配数字填写几就代表要匹配哪一个。
