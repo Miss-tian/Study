@@ -1,0 +1,54 @@
+一、使用selenium的步骤：
+
+    1、输入测试Base URL
+    2、打开录制按钮
+    3、在浏览器界面进行相关操作
+    4、回放录制的操作(注意：回访时浏览器一定要处于打开状态)
+    5、保存测试脚本
+
+二、导入已保存的脚本：
+
+    文件——>Open——>选择要导入的脚本
+
+三、Selenium IDE脚本编辑常用命令：
+
+    1、open(url)命令
+       (1)作用：打开指定的URL，URL可以为相对或是绝对URL；
+       (2)Target：要打开的URL；value值为空
+          当Target为空，将打开Base URL中填写的页面；
+          当Target不为空且值为相对路径，将打开Base URL+ Target页面。
+          当Target以http://开头时，将忽略Base URL,直接打开Target的网址；
+
+    2、pause(waitTime)
+       (1)作用：暂停脚本
+       (2)waitTime:等待时间，单位为ms；
+    
+    3、goBack()
+       (1)作用：模拟单击浏览器的后退按钮；(2)由于没有参数，所以Target和Value可不填；
+
+    4、refresh()
+       (1)作用：刷新当前页； (2)由于没有参数，所以Target和Value可不填；
+
+    5、windowMaximize()
+	(1)作用：将当前的窗口最大化，设置为全屏；没有参数，可不填Target和Value
+
+    6、click(locator)
+        (1)作用：单击一个链接、按钮、复选框或单选按钮；
+        (2)如果该单击事件导致新的页面加载，命令将会加上后缀"AndWait"
+
+    7、type(locator，value)
+        (1)作用：向指定输入域中输入指定值；也可为下拉框、复选框和单选框按钮赋值
+        (2)Target：元素的定位表达式；
+        (3)Value：要输入的值；
+
+    8、select(selectLocator,optionLocator)
+        (1)作用：模拟人工单击下拉列表框；
+           selectLocator:指向指定选择元素的元素定位器；
+           optionLocator：选项的选择器(默认为标签)；
+
+        (2)选项的选择方式两种label和Value
+           label=文本值，鲫鱼徐现象的文本进行匹配(默认方式)，如label=three；
+           value=真实值，鲫鱼选项的真实值进行匹配，如value=3；
+
+    9、close()
+        (1)作用：模拟用户单击窗口上的关闭按钮；Target和Value可不填
