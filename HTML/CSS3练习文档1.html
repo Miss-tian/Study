@@ -3,6 +3,7 @@
 <html lang="zh-cn">
 	<head>
 		<style>
+		    /*border-radius的举例*/
 			div.border-radius1
 			{
 			text-align:center;
@@ -12,6 +13,7 @@
 			width:350px;
 			border-radius:25px;
 			}
+			/*box-shadow的举例*/
 			div.box-shadow1
 			{
 			text-align:center;
@@ -21,10 +23,35 @@
 			background-color:#ff9900;
 			box-shadow:10px 10px 5px #888888
 			}
+			/*border-image的举例*/
 			div.border-image1
 			{
-			border-image:url(F:/Study/githook/Study/HTML/image/border.png)
+			border:15px solid transparent;
+			width:350px;
+			padding:10px 20px;
+			-moz-border-image:url(image/border.png) 30 30 stretch;/* Old Firefox*/
+			-webkit-border-image:url(image/border.png) 30 30 stretch;/*Safari and Chrome*/
+			-o-border-image:url(image/border.png) 30 30 stretch;/* Opera浏览器*/
+			border-image:url(image/border.png) 30 30 stretch;
 			}
+			div.border-image2
+			{
+			color:red;
+			border:15px solid transparent;
+			width:400px;
+			padding:10px 20px;
+			border-image:url(image/border.png) 30 30 round;
+			}
+			/*选择器的分组，分组的特有属性*/
+			div.border-radius1,div.border-image1
+			{
+			color:blue;
+			}
+			/*body最高元素特有的字体颜色*/
+			body
+			{
+			color:green;
+			} 
 		</style>
 	</head>
 	<body>
@@ -36,6 +63,6 @@
 	
 	<div class="border-image2">border-image属性:在这里，图片被拉伸以填充该区域</div>
 	<p>border-image属性：这是我们使用的图片:</p>
-	<img src="border-image:url(F:/Study/githook/Study/HTML/image/border.png">
+	<img src="image/border.png">
 	</body>	
 </html>
