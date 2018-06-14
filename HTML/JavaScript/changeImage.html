@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ChangeImage</title>
+</head>
+<body>
+<script>
+function changeImage(){
+	element=document.getElementById('myimage')
+	if (element.src.match("bulbon"))
+	{
+		element.src="../image/bulboff.gif";
+	}else{
+		element.src="../image/bulbon.gif";
+	}
+}
+</script>
+<img  id="myimage" onclick="changeImage()" src="../image/bulboff.gif" alt="111">
+<p>点击灯泡来点亮或熄灭这盏灯</p>
+</body>
+</html>
