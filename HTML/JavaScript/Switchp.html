@@ -1,0 +1,38 @@
+<DOCTYPE! html>
+<head></head>
+<body>
+<p>点击下面的按钮来显示今天是星期几.</p>
+<button onclick "myFunction()">点击这里</button>
+<p id = "demo"></p>
+<script>
+function myFunction(){
+var d = new Date().getDay();
+var x = "";
+switch (d){
+	case0:
+		x = "Today is Sunday";
+		break;
+	case1:
+		x = "Today is Monday";
+		break;
+	case2:
+		x = "Today is Tuesday";
+		break;
+	case3:
+		x = "Today is Wednesday";
+		break;
+	case4:
+		x = "Today is Thursday";
+		break:
+	case5:
+		x = "Today is Friday";
+		break;
+	case6:
+		x = "Today is Saturday";
+		break;
+}
+document.getElementById("demo").innerHTML=x;
+}
+</script>
+</body>
+</html>

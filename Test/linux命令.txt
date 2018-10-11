@@ -29,8 +29,40 @@ lijiahui
 
 14、查看服务器进程是否启动：ps -ef | grep jetty (这个是不知道端口号的时候用的命令，可以查看启动的路径等相关信息)
 
+15、服务器启动ngrok的命令：nohup ./ngrokd -tlsKey=snakeoil.key -tlsCrt=snakeoil.crt -domain="ngrok.zc2422.top" -httpAddr=":8081" -httpsAddr=":8082" -tunnelAddr=":8083" &
+
+16、ngrok的路径：cd ngroc/ngrok 
+
+17、ngrok所在服务器地址：120.78.131.194
+
+18、客户端启动ngrok的命令：./ngrok -config ngrok.cfg start ssh ng1
+
+    （start后跟.config里面的所有二级）
+
+
+
 15、启动进程使用的命令：bin/jetty.sh/start
 
 16、sz +文件名(下载linux上的文件)；下载的文件保存的路径在 options-sessions options-X/Y/Zmodem里面查看
 
 17、rz +文件名(将文件上传到linux)；上传的文件放在的路径在 options-sessions options-X/Y/Zmodem里面查看
+
+18、公司无线密码：cdyh@1201
+
+19、启动禅道的命令，路径：/opt/zbox   命令：./zbox restart
+
+20、20的ngrok所在目录：/usr/local/ngroc
+
+21、18的ngrok所在目录：/home/cdyh/ngrok
+
+
+22、redis进入的命令:/redis-cli -h 172.17.89.35 -p 6379 -a aliyuntest（目前也不知道具体是什么）
+
+23、teamviewer账号链接：836637944 密码：p971fu
+
+24、配置文件的查看：/usr/local/novel/novelpath  可以查看模块对应到哪个端口
+
+
+
+
+/home/cdyh/redis-3.2.11/src
